@@ -8,11 +8,13 @@ int number2;
 string operate;
 bool isCleanCalculator = true;
 
+Calculator cal = new Calculator();
+
 while (true)
 {
     if (isCleanCalculator)
     {
-        Calculator.number1 = getNumber();
+        cal.Number1 = getNumber();
         isCleanCalculator = false;
     }
 
@@ -20,14 +22,14 @@ while (true)
 
     if (operate == "=")
     {
-        Calculator.cleanCalculator();
+        cal.cleanCalculator();
         break;
     }
 
     number2 = getNumber();
 
-    Calculator.calculate(Calculator.number1, number2, operate);
-    Calculator.showResult();
+    cal.calculate(cal.Number1, number2, operate);
+    cal.showResult();
 }
 
 isCleanCalculator = true;

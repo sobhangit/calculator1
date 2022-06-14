@@ -6,26 +6,30 @@ using System.Threading.Tasks;
 
 namespace calculator
 {
-    class Calculator
+    class Calculator : ICalculator
     {
-        public static int number1 = 0;
-        string operate = "";
+        private int _number1;
+        private int _number2;
+        string operate = string.Empty;
 
-        public static void calculate(int num1, int num2, string op)
+        public int Number1 { get; set; }
+        public int Number2 { get; set; }
+
+        public void calculate(int num1, int num2, string op)
         {
             switch (op)
             {
                 case "+":
-                    number1 = sum(num1, num2);
+                    _number1 = sum(num1, num2);
                     break;
                 case "-":
-                    number1 = minus(num1, num2);
+                    _number1 = minus(num1, num2);
                     break;
                 case "*":
-                    number1 = multiply(num1, num2);
+                    _number1 = multiply(num1, num2);
                     break;
                 case "/":
-                    number1 = divide(num1, num2);
+                    _number1 = divide(num1, num2);
                     break;
                 case "=":
                     showResult();
@@ -34,38 +38,37 @@ namespace calculator
 
         }
 
-        static int sum(int number1, int number2)
+        public int sum(int number1, int number2)
         {
             return number1 + number2;
         }
 
-        static int minus(int number1, int number2)
+        public int minus(int number1, int number2)
         {
             return number1 - number2;
         }
 
-        static int multiply(int number1, int number2)
+        public int multiply(int number1, int number2)
         {
             return number1 * number2;
         }
 
-        static int divide(int number1, int number2)
+        public int divide(int number1, int number2)
         {
             return number1 / number2;
         }
 
-
-        public static void showResult()
+        public void showResult()
         {
-            Console.WriteLine("result : {0}", number1);
+            Console.WriteLine("result : {0}", _number1);
         }
 
-        public static void cleanCalculator()
+        public void cleanCalculator()
         {
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Green;
             showResult();
-            number1 = 0;
+            _number1 = 0;
             Console.ResetColor();
         }
 
