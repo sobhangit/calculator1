@@ -4,37 +4,45 @@ using calculator;
 Console.WriteLine("Calculator [ + , - , * , / ]");
 Console.WriteLine();
 
-int number2;
-string operate;
-bool isCleanCalculator = true;
-
 Calculator cal = new Calculator();
 
-while (true)
+bool runCalculator = true;
+bool isCleanCalculator = true;
+
+while (runCalculator)
 {
-    if (isCleanCalculator)
+    while (true)
     {
-        cal.Number1 = getNumber();
-        isCleanCalculator = false;
+        if (isCleanCalculator)
+        {
+            cal.Number1 = getNumber();
+            isCleanCalculator = false;
+        }
+
+        cal.Operate = getOperator();
+
+        if (cal.Operate == "=")
+        {
+            cal.cleanCalculator();
+            break;
+        }
+
+        cal.Number2 = getNumber();
+
+        cal.calculate(cal.Number1, cal.Number2, cal.Operate);
+        cal.showResult();
     }
 
-    operate = getOperator();
+    isCleanCalculator = true;
 
-    if (operate == "=")
-    {
-        cal.cleanCalculator();
-        break;
-    }
+    Console.WriteLine("Again : Y or N");
+    string code = Console.ReadLine();
 
-    number2 = getNumber();
-
-    cal.calculate(cal.Number1, number2, operate);
-    cal.showResult();
+    if (code == "Y".ToLower() ? runCalculator = true : runCalculator = false) ;
 }
 
-isCleanCalculator = true;
 
-static int getNumber()
+int getNumber()
 {
     string userInput;
     int number = 0;
@@ -61,7 +69,7 @@ static int getNumber()
     return number;
 }
 
-static string getOperator()
+string getOperator()
 {
     string operate;
 

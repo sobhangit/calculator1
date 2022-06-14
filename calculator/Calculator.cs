@@ -14,6 +14,7 @@ namespace calculator
 
         public int Number1 { get; set; }
         public int Number2 { get; set; }
+        public string Operate { get; set; }
 
         public void calculate(int num1, int num2, string op)
         {
