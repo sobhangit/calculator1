@@ -5,7 +5,7 @@ Console.WriteLine("Calculator [ + , - , * , / ]");
 Console.WriteLine();
 
 Calculator cal = new Calculator();
-
+// وقتی از اینترفیس استفاده میکنی بهتره اینطوری نمونه سازی کنی ICalculator cal = new Calculator();
 bool runCalculator = true;
 bool isCleanCalculator = true;
 
